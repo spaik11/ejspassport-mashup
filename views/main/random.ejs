@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head')  %> 
+        <title>Random Users</title>
+    </head>
+    <body>
+        <header>Random Profiles</header>
+            <% users.results.forEach(({name: {first, last}, picture}) => {%> 
+                <div class="randomBox">
+                    <img class="random" src=<%=`${picture.large}`%>>
+                    <p><%= `${first} ${last}` %> </p>
+                </div>
+            <%}) %>
+        <%- include('../partials/footer') %> 
+    </body>
+</html>
