@@ -6,9 +6,9 @@
     </head>
     <body>
         <header>Random Profiles</header>
-            <% users.results.forEach(({name: {first, last}, picture}) => {%> 
+            <% sortedUsers.forEach(({name: {first, last}, picture: {large}}) => {%> 
                 <div class="randomBox">
-                    <img class="random" src=<%=`${picture.large}`%>>
+                    <img class="random" src=<%=`${large}`%>>
                     <p><%= `${first} ${last}` %> </p>
                 </div>
             <%}) %>

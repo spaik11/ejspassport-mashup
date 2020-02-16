@@ -31,19 +31,22 @@ app.get('/randomusers', (req, res) => {
     fetch(url)
         .then(res => res.json())
         .then(users => {
-            res.render('main/random', { users });
+            const sortedUsers = users.results.sort((a, b) => (a.name.last > b.name.last) ? 1 : ((b.name.last > a.name.last) ? -1 : 0))
+            res.render('main/random', { sortedUsers });
         })
         .catch(err => console.log(err));
 });
 
 app.get('/movies', (req, res) => {
-    const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=f991468af55f72d5713869df80441593&language=en-US&page=1';
+    const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=';
+    const urlEnd = '&language=en-US&page=1';
+    const apiKey = process.env.API_KEY
     const img = 'https://image.tmdb.org/t/p/w500';
 
-    fetch(url)
+    fetch(url+apiKey+urlEnd)
         .then(res => res.json())
         .then(movies => {
-            res.render('main/movies', { movies, url, img })
+            res.render('main/movies', { movies, img })
         })
 });
 
