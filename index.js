@@ -29,12 +29,12 @@ app.get('/randomusers', (req, res) => {
     const url = 'https://randomuser.me/api/?results=20';
 
     fetch(url)
-        .then(res => res.json())
-        .then(users => {
+        .then((res) => res.json())
+        .then((users) => {
             const sortedUsers = users.results.sort((a, b) => (a.name.last > b.name.last) ? 1 : ((b.name.last > a.name.last) ? -1 : 0))
             res.render('main/random', { sortedUsers });
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 });
 
 app.get('/movies', (req, res) => {
@@ -44,10 +44,11 @@ app.get('/movies', (req, res) => {
     const img = 'https://image.tmdb.org/t/p/w500';
 
     fetch(url+apiKey+urlEnd)
-        .then(res => res.json())
-        .then(movies => {
+        .then((res) => res.json())
+        .then((movies) => {
             res.render('main/movies', { movies, img })
         })
+        .catch((err) => console.log(err))
 });
 
 app.listen(port, () => {

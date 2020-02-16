@@ -29,7 +29,7 @@ header {
     display: flex;
     flex-direction: row;
     font-size: .9em;
-    width: 350px;
+    width: 425px;
     border: 1px solid black;
     background-color: white;
 }
@@ -78,4 +78,10 @@ p {
 
 h4 {
     margin: 0;
+}
+
+@media (max-width: 500) {
+    body {
+        flex-direction: column;
+    }
 }
